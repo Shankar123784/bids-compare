@@ -1,0 +1,95 @@
+<mvc:View controllerName="com.bids.appsbids.controller.Bids"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:layout="sap.ui.layout"
+    xmlns:mc="sap.suite.ui.microchart"
+    xmlns:fb="sap.ui.comp.filterbar">
+    <semantic:SemanticPage id="sematicPageId" headerPinnable="true" toggleHeaderOnTitleClick="false" preserveHeaderStateOnScroll="false"
+			titleAreaShrinkRatio="0:0:0" showFooter="false" headerExpanded="true" >
+        <semantic:headerContent>
+            <form:Form editable="true" >
+                <form:layout>
+                    <form:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+                            emptySpanM="0" emptySpanS="0" columnsXL="5" columnsL="5" columnsM="5" singleContainerFullSize="true"  />
+                </form:layout>
+                <form:formContainers>
+                    <form:FormContainer >
+                        <form:formElements>
+                            <form:FormElement >
+                                <form:label >
+                                    <Label text="Request for Quotations" ></Label>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="companyCode" showValueHelp="true" valueHelpRequest="onCompanyCode" value="{DetailsModel>/company}" width="300px"
+                                         editable="{ui>/edit}" tooltip="{DetailsModel>/companyName}" />
+                                </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                    </form:FormContainer>
+                </form:formContainers>
+            </form:Form>
+            <HBox >
+                <VBox >
+                    <Title id="compareBidsTitle" text="RFQ Testing 01" titleStyle="H5"
+				        textAlign="Initial"	width="auto"/>
+                </VBox>
+            </HBox>
+            <layout:HorizontalLayout allowWrapping="true">
+                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                    <ObjectAttribute title="Version " text="1"></ObjectAttribute>
+                    <ObjectAttribute title="Published On " text="21-11-2023" ></ObjectAttribute>
+                    <ObjectAttribute title="Document Currency " text="EUR" ></ObjectAttribute>
+                </layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                    <ObjectAttribute title="Status" textDirection="Inherit"/>
+                    <ObjectStatus text="Published" class="sapMObjectStatusLarge" ></ObjectStatus>
+                </layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                    <ObjectAttribute title="Submission Deadline" class=""/>
+                    <ObjectStatus text="30-12-2023, 12:30:00" class="sapMObjectStatusLarge"></ObjectStatus>
+                </layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                    <ObjectAttribute title="Total Target Amount" class=""/>
+                    <ObjectStatus text="88399363.35EUR" class="sapMObjectStatusLarge"></ObjectStatus>
+                </layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                    <ObjectAttribute title="Number of Invited Bidders" />
+                    <FlexBox renderType="Bare" direction="Column" class="sapUiSmallMarginBegin">
+		                <items>
+                            <FlexBox id="chartContainer" width="2rem" height="4rem" renderType="Bare" class="sapUiSmallMargin">
+                                <items>
+                                    <mc:HarveyBallMicroChart id="harveyBallChart" size="Responsive" total="100" totalScale="Mrd" press="press">
+                                        <mc:items>
+                                            <mc:HarveyBallMicroChartItem fraction="63.5" color="Good" fractionScale="Mrd" />
+                                        </mc:items>
+                                    </mc:HarveyBallMicroChart>
+                                </items>
+                            </FlexBox>
+		                </items>
+	                </FlexBox>
+                </layout:VerticalLayout> 
+                 <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                    <ObjectAttribute title="Comparision of Target Value/Best Quotation" />
+                    <Text text="Target Value"></Text>
+                    <ProgressIndicator
+                        id="pi-without-animation"
+                        state="Success"
+                        displayOnly="true"
+                        displayAnimation= "false" />
+                    <Text text="Best Quotation"></Text>
+                    <ProgressIndicator
+                        id="pi-without-animation1"
+                        state="Success"
+                        displayOnly="false"
+                        displayAnimation= "false" />
+                </layout:VerticalLayout> 
+            </layout:HorizontalLayout>
+        </semantic:headerContent>      
+    </semantic:SemanticPage>
+</mvc:View>

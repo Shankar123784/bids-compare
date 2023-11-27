@@ -1,0 +1,17 @@
+/* Enter your custom styles here */
+
+.container {
+  align-content: flex-end;
+}
+
+.sapFDynamicPageTitle {
+  display: none;
+}
+
+.sapFDynamicPageTitleExpanded {
+  text-align: initial;
+}
+
+.sapMPageHeader {
+  display: none !important;
+}
