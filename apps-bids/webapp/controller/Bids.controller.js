@@ -25,6 +25,45 @@ sap.ui.define([
     
                 var oBinding = oEvent.getParameter("itemsBinding");
                 oBinding.filter([aFilter]);
-            }
+            },
+            onBudgetCheck: function (oEvent) {
+                var oPRFlag = "1";
+                var oItemsConsistent = this.onCheckPRNonPRItmes(oPRFlag);
+                if (oItemsConsistent.itemConsistent === false) {
+                    MessageToast.show("Budget check can be executed only for PR items");
+                    return;
+                }
+                var oDetailsModel = this.getOwnerComponent().getModel("DetailsModel");
+                var oDetailsData;
+                var oRFQType = "0";
+                var oItemModel;
+                var oItemData;
+                if (oDetailsModel !== undefined) {
+                    oDetailsData = oDetailsModel.getData();
+                    if (oDetailsData !== undefined) {
+                        oRFQType = oDetailsData.rfqType;
+                        if (oRFQType === "1" || oRFQType === "2") {
+                            oItemModel = this.getOwnerComponent().getModel("PRSelectedTreeModel");
+                            if (oItemModel !== undefined) {
+                                oItemData = oItemModel.getData();
+                            }
+                        } else if (oRFQType === "3") {
+                            oItemModel = this.getView().getModel("list");
+                            if (oItemModel !== undefined) {
+                                oItemData = oItemModel.getData();
+                                oItemData = this.onInitializeSubconData(oItemData, "PUT");
+                            }
+                        }
+                    }
+                }
+    
+                if (oItemModel !== undefined) {
+                    if (oItemData !== undefined && oItemData.length > 0) {
+                        this.onExecuteBudgetCheck(oItemData, oRFQType);
+                    }
+                } else {
+                    MessageToast.show("No items selected for this RFQ");
+                }
+            },
         });
     });
