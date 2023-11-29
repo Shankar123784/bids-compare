@@ -65,5 +65,16 @@ sap.ui.define([
                     MessageToast.show("No items selected for this RFQ");
                 }
             },
+            onRFQTypeSelected: function () {
+                var oType = sap.ui.getCore().byId("RBRFQType");
+                this.RFQType = oType.getSelectedButton().getText();
+    
+                this.onSelectType();
+                if (this._oDialog) {
+                    this._oDialog.close();
+                }
+    
+                this.onCreateRFQ();
+            },
         });
     });
