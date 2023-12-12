@@ -5,7 +5,10 @@
     xmlns:semantic="sap.f.semantic"
     xmlns:layout="sap.ui.layout"
     xmlns:mc="sap.suite.ui.microchart"
-    xmlns:fb="sap.ui.comp.filterbar">
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core">
     <semantic:SemanticPage id="sematicPageId" headerPinnable="true" toggleHeaderOnTitleClick="false" preserveHeaderStateOnScroll="false"
 			titleAreaShrinkRatio="0:0:0" showFooter="false" headerExpanded="true" >
         <semantic:headerContent>
@@ -37,28 +40,28 @@
                 </VBox>
             </HBox>
             <layout:HorizontalLayout allowWrapping="true">
-                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                <layout:VerticalLayout class="sapUiMediumMarginEnd" width="auto">
                     <ObjectAttribute title="Version " text="1"></ObjectAttribute>
                     <ObjectAttribute title="Published On " text="21-11-2023" ></ObjectAttribute>
                     <ObjectAttribute title="Document Currency " text="EUR" ></ObjectAttribute>
                 </layout:VerticalLayout>
 
-                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                <layout:VerticalLayout class="sapUiMediumMarginEnd" width="auto">
                     <ObjectAttribute title="Status" textDirection="Inherit"/>
                     <ObjectStatus text="Published" class="sapMObjectStatusLarge" ></ObjectStatus>
                 </layout:VerticalLayout>
 
-                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                <layout:VerticalLayout class="sapUiMediumMarginEnd" width="auto">
                     <ObjectAttribute title="Submission Deadline" class=""/>
                     <ObjectStatus text="30-12-2023, 12:30:00" class="sapMObjectStatusLarge"></ObjectStatus>
                 </layout:VerticalLayout>
 
-                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                <layout:VerticalLayout class="sapUiMediumMarginEnd" width="auto">
                     <ObjectAttribute title="Total Target Amount" class=""/>
                     <ObjectStatus text="88399363.35EUR" class="sapMObjectStatusLarge"></ObjectStatus>
                 </layout:VerticalLayout>
 
-                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                <layout:VerticalLayout class="sapUiMediumMarginEnd" width="auto">
                     <ObjectAttribute title="Number of Invited Bidders" />
                     <FlexBox renderType="Bare" direction="Column" class="sapUiSmallMarginBegin">
 		                <items>
@@ -74,22 +77,63 @@
 		                </items>
 	                </FlexBox>
                 </layout:VerticalLayout> 
-                 <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                 <layout:VerticalLayout class="sapUiMediumMarginEnd" width="auto" visible="false">
                     <ObjectAttribute title="Comparision of Target Value/Best Quotation" />
                     <Text text="Target Value"></Text>
                     <ProgressIndicator
+                        width="50%"
                         id="pi-without-animation"
                         state="Success"
                         displayOnly="true"
                         displayAnimation= "false" />
                     <Text text="Best Quotation"></Text>
                     <ProgressIndicator
+                        width="50%"
                         id="pi-without-animation1"
                         state="Success"
                         displayOnly="false"
                         displayAnimation= "false" />
                 </layout:VerticalLayout> 
             </layout:HorizontalLayout>
-        </semantic:headerContent>      
+        </semantic:headerContent>
+        <semantic:content>
+            <layout:Grid containerQuery="true" id="cardsGrid" defaultIndent="XL0 L0 M0 S0" defaultSpan="XL3 L3 M6 S12" class="gridProgressIndicator" hSpacing="0" content="{/cards}" >
+            <!-- <Panel > -->
+                <f:Card class="sapUiMediumMargin" width="auto" >
+                    <f:header>
+                        <card:Header
+                        title="{title}"
+                        subtitle="{subTitle}"
+                        iconSrc="{icon}"/>
+                    </f:header>
+                    <f:content>
+                        <VBox
+                        height="115px"
+                        class="sapUiSmallMargin"
+                        justifyContent="SpaceBetween">
+                            <HBox justifyContent="SpaceBetween">
+                                <ComboBox
+                                width="120px"
+                                placeholder="To City"
+                                items="{items}">
+                                    <core:Item key="{key}" text="{text}" />
+                                </ComboBox>
+                                <ComboBox
+                                width="120px"
+                                placeholder="To City"
+                                items="{items}">
+                                    <core:Item key="{key}" text="{text}" />
+                                </ComboBox>
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween">
+                                <DatePicker width="186px" placeholder="Choose Date ..."/>
+                                <Button text="Book" press="onBookPress" type="Emphasized" />
+                            </HBox>
+                        </VBox>
+                    </f:content>
+                </f:Card>
+            <!-- </Panel>    -->
+            </layout:Grid>
+        </semantic:content>   
     </semantic:SemanticPage>
 </mvc:View>
