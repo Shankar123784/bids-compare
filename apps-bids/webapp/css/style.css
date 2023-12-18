@@ -15,3 +15,61 @@
 .sapMPageHeader {
   display: none !important;
 }
+
+.sapMFlexBox.demoBox {
+	border-radius: 10px;
+	background-color: #04090e;
+	text-align: left;
+  order: 1;
+  flex: 3 1 auto;
+  min-height: 3rem;
+  min-width: auto;
+  height: fit-content;
+  padding: 1rem 2rem;
+}
+.sapMFlexBox.demoBox1 {
+	border-radius: 10px;
+	background-color: #04090e;
+	text-align: left;
+}
+.demoBox .sapMTitle,
+.demoBox .sapMText {
+	color: #fff;
+  text-align: initial;
+}
+
+
+.demo1 {
+  padding: 10px;
+}
+
+
+.sapMPIBar::before {
+  visibility: hidden;
+}
+
+.border {
+  border-width: 0;
+  padding-left: 10px;
+}
+
+
+
+.sapMTitle{
+  padding: 15px;
+}
+
+.sapMLabel {
+  padding-left: 40px;
+}
+
+
+element.style {
+  width: 250%;
+  /* padding-left: 40px; */
+  height: 1cm;
+}
+.sapMPI {
+  padding-left: 40px;
+}
+

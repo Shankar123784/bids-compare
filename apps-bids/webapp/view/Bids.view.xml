@@ -8,7 +8,8 @@
     xmlns:fb="sap.ui.comp.filterbar"
     xmlns:f="sap.f"
     xmlns:card="sap.f.cards"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:cssgrid="sap.ui.layout.cssgrid">
     <semantic:SemanticPage id="sematicPageId" headerPinnable="true" toggleHeaderOnTitleClick="false" preserveHeaderStateOnScroll="false"
 			titleAreaShrinkRatio="0:0:0" showFooter="false" headerExpanded="true" >
         <semantic:headerContent>
@@ -97,43 +98,71 @@
             </layout:HorizontalLayout>
         </semantic:headerContent>
         <semantic:content>
-            <layout:Grid containerQuery="true" id="cardsGrid" defaultIndent="XL0 L0 M0 S0" defaultSpan="XL3 L3 M6 S12" class="gridProgressIndicator" hSpacing="0" content="{/cards}" >
-            <!-- <Panel > -->
-                <f:Card class="sapUiMediumMargin" width="auto" >
-                    <f:header>
-                        <card:Header
-                        title="{title}"
-                        subtitle="{subTitle}"
-                        iconSrc="{icon}"/>
-                    </f:header>
-                    <f:content>
-                        <VBox
-                        height="115px"
-                        class="sapUiSmallMargin"
-                        justifyContent="SpaceBetween">
-                            <HBox justifyContent="SpaceBetween">
-                                <ComboBox
-                                width="120px"
-                                placeholder="To City"
-                                items="{items}">
-                                    <core:Item key="{key}" text="{text}" />
-                                </ComboBox>
-                                <ComboBox
-                                width="120px"
-                                placeholder="To City"
-                                items="{items}">
-                                    <core:Item key="{key}" text="{text}" />
-                                </ComboBox>
-                            </HBox>
-                            <HBox justifyContent="SpaceBetween">
-                                <DatePicker width="186px" placeholder="Choose Date ..."/>
-                                <Button text="Book" press="onBookPress" type="Emphasized" />
-                            </HBox>
+            <cssgrid:CSSGrid id="itemsQuote" >
+                <cssgrid:customLayout>
+                    <cssgrid:GridResponsiveLayout containerQuery="true">
+                        <cssgrid:layout>
+                            <cssgrid:GridSettings gridGap="1rem" gridTemplateColumns="minmax(100px, 300px) auto"  ></cssgrid:GridSettings>
+                        </cssgrid:layout>
+                        <cssgrid:layoutS>
+							<cssgrid:GridSettings gridGap="1rem" gridTemplateColumns="1fr"></cssgrid:GridSettings>
+						</cssgrid:layoutS>
+                    </cssgrid:GridResponsiveLayout>
+                </cssgrid:customLayout>
+                <f:GridList id="gridList1" headerText="Summary" borderReached=".onBorderReached"  >
+					<f:customLayout>
+						<cssgrid:GridBasicLayout gridAutoRows="15rem" gridTemplateColumns="repeat(auto-fill, minmax(15rem, 1fr))"  gridGap="0.5rem" ></cssgrid:GridBasicLayout>
+					</f:customLayout>
+					<f:GridListItem>
+                        <VBox class="sapUiTinyMarginBottom">
+                            <Title text="Header" titleStyle="H3" textAlign="Center" class="sapMTitle"></Title>
                         </VBox>
-                    </f:content>
-                </f:Card>
-            <!-- </Panel>    -->
-            </layout:Grid>
+						<layout:VerticalLayout >
+                            <layout:HorizontalLayout class="sapUiSmallMarginBottom">
+                                <Label text="Fully Awarded Items" class="sapMLabel"/>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout class="sapUiSmallMarginBottom">
+                                <ProgressIndicator width="250%"
+                                    id="pi-without-ani"
+                                    state="Success"
+                                     displayOnly="true"
+                                    displayAnimation= "false" />
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout class="sapUiSmallMarginBottom">
+                                <ObjectAttribute title="Total Net Value for Award" text="5476 USD" ></ObjectAttribute>
+                            </layout:HorizontalLayout>
+                        </layout:VerticalLayout>
+                        
+					</f:GridListItem>
+				</f:GridList>
+
+				<f:GridList id="gridList2" headerText="Quotations" borderReached=".onBorderReached" items="{path: '/items2'}">
+					<f:customLayout>
+						<cssgrid:GridBasicLayout gridAutoRows="15rem" gridTemplateColumns="repeat(auto-fill, minmax(17rem, 1fr))" gridGap="0.5rem"></cssgrid:GridBasicLayout>
+					</f:customLayout>
+					<f:GridListItem>
+						
+					</f:GridListItem>
+				</f:GridList>
+                <f:GridList id="gridList3" headerText="Summary" borderReached=".onBorderReached" items="{path: '/items1'}" >
+					<f:customLayout>
+						<cssgrid:GridBasicLayout gridAutoRows="50rem" gridTemplateColumns="repeat(auto-fill, minmax(10rem, 1fr))"  gridGap="0.5rem" ></cssgrid:GridBasicLayout>
+					</f:customLayout>
+					<f:GridListItem>
+						<VBox class="sapUiSmallMargin">
+							<Title text="{title}" wrapping="true" />
+                            <Text text="Fully Awared Items" textAlign="Center" class="demo1"></Text>
+                            <ProgressIndicator width="75%" class="sapMPIBar border sapMPIBarRemaining"
+                                id="pi-without-animation125"
+                                state="Success"
+                                displayOnly="true"
+                                percentValue="100"/>
+                            <Text text="Total Net Value for Award" textAlign="Center" class="demo1"></Text>
+                            <Text text="3700PLN" class="demo1" textAlign="Center"></Text>
+						</VBox>
+					</f:GridListItem>
+				</f:GridList>
+            </cssgrid:CSSGrid>  
         </semantic:content>   
     </semantic:SemanticPage>
 </mvc:View>
