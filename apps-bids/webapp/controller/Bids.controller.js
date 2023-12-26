@@ -16,6 +16,7 @@ sap.ui.define([
             onInit: function () {
                 var oModel = new JSONModel(sap.ui.require.toUrl("com/bids/appsbids/model/data.json"));
                 this.getView().setModel(oModel);
+                // this.getView().byId("gridList3").setHeaderVisibility(false)
             },
             onSearchPackageCode: function (oEvent) {
                 var sValue = oEvent.getParameter("value");

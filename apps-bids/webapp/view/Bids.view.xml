@@ -119,7 +119,7 @@
                         </VBox>
 						<layout:VerticalLayout >
                             <layout:HorizontalLayout class="sapUiSmallMarginBottom">
-                                <Label text="Fully Awarded Items" class="sapMLabel"/>
+                                <Label text="Fully Awarded Items" />
                             </layout:HorizontalLayout>
                             <layout:HorizontalLayout class="sapUiSmallMarginBottom">
                                 <ProgressIndicator width="250%"
@@ -131,6 +131,9 @@
                             <layout:HorizontalLayout class="sapUiSmallMarginBottom">
                                 <ObjectAttribute title="Total Net Value for Award" text="5476 USD" ></ObjectAttribute>
                             </layout:HorizontalLayout>
+                            <layout:HorizontalLayout class="sapUiSmallMarginBottom">
+                                <ObjectAttribute title="Currency" text="USD" ></ObjectAttribute>
+                            </layout:HorizontalLayout>
                         </layout:VerticalLayout>
                         
 					</f:GridListItem>
@@ -141,15 +144,36 @@
 						<cssgrid:GridBasicLayout gridAutoRows="15rem" gridTemplateColumns="repeat(auto-fill, minmax(17rem, 1fr))" gridGap="0.5rem"></cssgrid:GridBasicLayout>
 					</f:customLayout>
 					<f:GridListItem>
-						
+						<VBox class="sapUiTinyMarginBottom">
+                            <Title text="2997377373- SI Automobiles" titleStyle="H3" textAlign="Center" class="sapMTitle"></Title>
+                        </VBox>
+						<layout:VerticalLayout >
+                            <layout:HorizontalLayout class="sapUiSmallMarginBottom">
+                               <ObjectAttribute title="Total Quotation Net Value" text="1500.00" ></ObjectAttribute>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout class="sapUiSmallMarginBottom">
+                                <ObjectAttribute title="Fully Quoted Items" text="1/1" ></ObjectAttribute>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout class="sapUiSmallMarginBottom">
+                                <ObjectAttribute title="Currency" text="USD" ></ObjectAttribute>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout class="sapUiSmallMarginBottom buttonCSS">
+                                <Toolbar >
+                                    <ToolbarSpacer/>
+                                    <Button text="Default" press="onPress" />
+                                    <Button type="Reject" text="Reject" press="onPress" />
+                                    <ToolbarSpacer/>
+                                </Toolbar>
+                            </layout:HorizontalLayout>
+                        </layout:VerticalLayout>
 					</f:GridListItem>
 				</f:GridList>
-                <f:GridList id="gridList3" headerText="Summary" borderReached=".onBorderReached" items="{path: '/items1'}" >
-					<f:customLayout>
-						<cssgrid:GridBasicLayout gridAutoRows="50rem" gridTemplateColumns="repeat(auto-fill, minmax(10rem, 1fr))"  gridGap="0.5rem" ></cssgrid:GridBasicLayout>
+                <f:GridList id="gridList3" headerText="Summary"  borderReached=".onBorderReached" items="{path: '/items1'}" class="gridList3-header">
+					<f:customLayout >
+						<cssgrid:GridBasicLayout gridAutoRows="15rem" gridTemplateColumns="repeat(auto-fill, minmax(10rem, 1fr))"  gridGap="0.5rem" ></cssgrid:GridBasicLayout>
 					</f:customLayout>
 					<f:GridListItem>
-						<VBox class="sapUiSmallMargin">
+						<VBox class="sapUiSmallMargin ">
 							<Title text="{title}" wrapping="true" />
                             <Text text="Fully Awared Items" textAlign="Center" class="demo1"></Text>
                             <ProgressIndicator width="75%" class="sapMPIBar border sapMPIBarRemaining"
